@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: hospital_data
+    database: hospital
+    schema: public
+    tables:
+      - name: appointments
+      - name: billing
+      - name: doctors
+      - name: patients
+      - name: treatments
