@@ -1,11 +1,13 @@
 {{
     config(
-        schema = 'transformation'
+        schema = 'transformation',
+        pre_hook=["{{start_log( invocation_id) }}"],
+        post_hook=["{{ end_log( invocation_id) }}"]
     )
 }}
 
 select
-   concat('A', cast(row_number() over (order by appointment_id) as varchar)) as appointment_key, 
+   concat('A-', cast(row_number() over (order by appointment_id) as varchar), substring(patient_id,2),substring(doctor_id,2)) as appointment_key, 
    appointment_id,
    concat(left(patient_id,1) ,'-', substring(patient_id,2)) as patient_key,
    patient_id,

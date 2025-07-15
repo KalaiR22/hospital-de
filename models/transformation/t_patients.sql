@@ -1,11 +1,13 @@
 {{
     config(
-        schema = 'transformation'
+        schema = 'transformation',
+        pre_hook=["{{start_log( invocation_id) }}"],
+        post_hook=["{{ end_log( invocation_id) }}"]
     )
 }}
 
 select 
-   concat('P', cast(row_number() over (order by patient_id) as varchar)) as patient_key,
+   concat('P-', cast(row_number() over (order by patient_id) as varchar)) as patient_key,
   patient_id,
   coalesce(first_name,'unknown') as first_name,
   coalesce(last_name,'unknown') as last_name,

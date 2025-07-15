@@ -1,10 +1,11 @@
 {{
     config(
         materialized='table',
-        schema = 'staging',
+        schema = 'marts',
         pre_hook=["{{start_log( invocation_id) }}"],
         post_hook=["{{ end_log( invocation_id) }}"]
     )
 }}
 
-select * from {{ source('hospital_data', 'treatments') }}
+select {{ dbt_utils.star(from=ref('int_patients') )}}  
+from {{ ref('int_patients') }}

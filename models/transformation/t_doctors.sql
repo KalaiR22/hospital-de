@@ -1,6 +1,8 @@
 {{
     config(
-        schema = 'transformation'
+        schema = 'transformation',
+        pre_hook=["{{start_log( invocation_id) }}"],
+        post_hook=["{{ end_log( invocation_id) }}"]
     )
 }}
 
@@ -14,5 +16,5 @@ select
    coalesce(years_experience,0) as years_experience,
    coalesce(hospital_branch,'unknown') as hospital_branch,
    coalesce(email ,'unknown@hospital.com') as email,
-   current_timestamp() as updated_at
+   current_timestamp() as last_updated_at
 from {{ ref('stg_doctors') }}
