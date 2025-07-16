@@ -1,37 +1,17 @@
-{{
-    config(
-        schema='intermediate',
+  {{config(
+        schema = 'intermediate',
         materialized='incremental',
-        unique_key='doctor_id',
-        merge_update_columns=[
-            'first_name',
-            'last_name',
-            'specialization',
-            'phone_number',
-            'years_experience',
-            'hospital_branch',
-            'email',
-           'last_updated_at',  
-            'updated_at'  
-        ],
+        unique_key = 'doctor_id',
         pre_hook=["{{start_log( invocation_id) }}"],
         post_hook=["{{ end_log( invocation_id) }}"],
-        tags=['doctors']
+        tags = 'doctors'
     )
 }}
 
-select 
-    doctor_key,
-    doctor_id,
-    first_name,
-    last_name,
-    specialization,
-    phone_number,
-    years_experience,
-    hospital_branch,
-    email,
-    last_updated_at,  
-    current_timestamp() as updated_at  
+select {{ dbt_utils.star(from=ref('t_doctors') ) }}
 from {{ ref('t_doctors') }}
-
+{% if is_incremental() %}
+    -- this filter will only be applied on an incremental run
+    where last_updated_at > (select max(last_updated_at) from {{ this }}) 
+{% endif %}
 
