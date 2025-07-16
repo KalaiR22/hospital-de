@@ -4,7 +4,8 @@
         materialized='incremental',
         unique_key = 'treatment_key',
         pre_hook=["{{start_log( invocation_id) }}"],
-        post_hook=["{{ end_log( invocation_id) }}"]
+        post_hook=["{{ end_log( invocation_id) }}"],
+        tags = 'treatments'
     )
 }}
 
