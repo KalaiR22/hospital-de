@@ -3,7 +3,8 @@
     config(
         schema = 'transformation',
         pre_hook=["{{start_log( invocation_id) }}"],
-        post_hook=["{{ end_log( invocation_id) }}"]
+        post_hook=["{{ end_log( invocation_id) }}"],
+        tags=['treatments']
     )
 }}
 
