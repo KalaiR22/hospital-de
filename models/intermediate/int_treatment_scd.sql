@@ -7,7 +7,9 @@
         merge_update_columns=[
             'treatment_type',
             'description',
-            'cost_range'
+            'cost_range',
+            'last_updated',  
+            'updated_at'        
         ],
          pre_hook=["{{start_log( invocation_id) }}"],
         post_hook=["{{ end_log( invocation_id) }}"],
@@ -24,6 +26,4 @@ select
     current_timestamp() as updated_at
 from {{ ref('t_treatments_type') }}
 
-{% if is_incremental() %}
-    where last_updated > (select max(last_updated) from {{ this }})
-{% endif %}
+
