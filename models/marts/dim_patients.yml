@@ -31,18 +31,24 @@ models:
           - not_null
       - name: contact_number
         description: "Patient's contact phone number."
+        tests:
+          - phone_number_check
       - name: address
         description: "Patient's home address."
       - name: registration_date
         description: "Date when the patient was registered."
         tests:
           - not_null
+          - check_for_date_format
       - name: insurance_provider
         description: "Name of the patient's insurance provider."
       - name: insurance_number
         description: "Patient's insurance policy number."
       - name: email
         description: "Patient's email address."
+        tests:
+           - check_for_mail_format:
+              mail_format: '@mail.com'
       - name: effective_start_date
         description: "Start date of the insurance coverage."
       - name: effective_end_date

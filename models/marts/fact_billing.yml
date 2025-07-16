@@ -19,10 +19,12 @@ models:
         description: "Bill date given to the patient when they paid the bill"
         tests:
           - not_null
+          - check_for_date_format
       - name: amount
         description: "It contains the amount that points to different status like paid, pending"
         tests:
           - not_null
+          - check_for_positive_value
       - name: payment_method
         description: "It contains the mode of the payment used for paying the bill"
         tests:

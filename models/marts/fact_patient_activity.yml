@@ -14,10 +14,12 @@ models:
         description: "Total amount billed  for each patients"
         tests:
           - not_null
+          - check_for_positive_value
       - name: total_paid
         description: "Total amount paid by each patients"
         tests:
           - not_null
+          - check_for_positive_value
       - name: no_show_count
         description: "Count of missed or no-show appointments for each patients"
         tests:

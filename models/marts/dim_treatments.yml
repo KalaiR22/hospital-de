@@ -9,11 +9,6 @@ models:
         tests:
           - not_null
           - unique
-      - name: treatment_id
-        description: "Internal system-generated ID for the treatment."
-        tests:
-          - not_null
-          - unique
       - name: treatment_type
         description: "Type or category of the treatment provided."
         tests:
@@ -22,12 +17,8 @@ models:
               values: ["Chemotherapy", "MRI", "ECG", "Physiotherapy", "X-Ray"]
       - name: description
         description: "Free-text description of the treatment."
-      - name: cost
+      - name: cost_range
         description: "Cost incurred for the treatment."
-        tests:
-          - not_null
-      - name: treatment_date
-        description: "Date when the treatment was administered."
         tests:
           - not_null
       - name: updated_at

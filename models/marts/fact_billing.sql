@@ -7,5 +7,5 @@
     )
 }}
 
-select {{ dbt_utils.star(from=ref('t_billing') ,  except = ["bill_id","patient_id","treatment_id"])}}  
-from {{ ref('t_billing') }}
+select {{ dbt_utils.star(from=ref('int_billing') ,  except = ["bill_id","patient_id"])}}  
+from {{ ref('int_billing') }}

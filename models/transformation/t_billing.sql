@@ -10,7 +10,7 @@ select
    bill_id,
    concat(left(patient_id,1) ,'-', substring(patient_id,2)) as patient_key,
    patient_id,
-   concat(left(treatment_id,1) ,'-', substring(treatment_id,2)) as treatment_key,
+   concat('T', cast(row_number() over (order by treatment_id ) as varchar)) as treatment_key,
    treatment_id,
    to_date(bill_date) as bill_date,
    coalesce(amount, 000) as amount,

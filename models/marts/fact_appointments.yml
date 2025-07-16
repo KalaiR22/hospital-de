@@ -19,6 +19,7 @@ models:
         description: "Appointment date given to the patient to visit the doctor"
         tests:
           - not_null
+          - check_for_date_format
       - name: appointment_time
         description: "Appointment time given to the patient to visit the doctor"
         tests:

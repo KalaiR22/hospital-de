@@ -7,5 +7,5 @@
     )
 }}
 
-select {{ dbt_utils.star(from=ref('int_treatment_scd') )}}  
+select {{ dbt_utils.star(ref('int_treatment_scd'))}}  
 from {{ ref('int_treatment_scd') }}
