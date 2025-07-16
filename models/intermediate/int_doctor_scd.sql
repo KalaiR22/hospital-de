@@ -10,7 +10,9 @@
             'phone_number',
             'years_experience',
             'hospital_branch',
-            'email'
+            'email',
+           'last_updated_at',  
+            'updated_at'  
         ],
         pre_hook=["{{start_log( invocation_id) }}"],
         post_hook=["{{ end_log( invocation_id) }}"],
@@ -32,6 +34,4 @@ select
     current_timestamp() as updated_at  
 from {{ ref('t_doctors') }}
 
-{% if is_incremental() %}
-    where last_updated_at > (select max(last_updated_at) from {{ this }})
-{% endif %}
+
