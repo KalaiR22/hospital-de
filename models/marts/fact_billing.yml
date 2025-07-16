@@ -1,0 +1,39 @@
+version: 2
+models:
+  - name: fact_billing
+    columns:
+      - name: bill_key
+        description: "unique key for the bill table to identify patients bill"
+        tests:
+          - unique
+          - not_null
+      - name: patient_key
+        description: "key of the patients who pays the bill and foreign key for dim_patients"
+        tests:
+          - not_null
+      - name: treatment_key
+        description: "key of the treatment they visited and foreign key for dim_doctors"
+        tests:
+          - not_null
+      - name: bill_date
+        description: "Bill date given to the patient when they paid the bill"
+        tests:
+          - not_null
+          - check_for_date_format
+      - name: amount
+        description: "It contains the amount that points to different status like paid, pending"
+        tests:
+          - not_null
+          - check_for_positive_value
+      - name: payment_method
+        description: "It contains the mode of the payment used for paying the bill"
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ["Insurance", "Credit Card", "Cash"]
+      - name: payment_status
+        description: "It contains status of the bill whether the patient paid or pending the bill"
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ["Pending", "Paid", "Failed"]

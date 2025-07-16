@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: dim_patients 
+    description: "Patient informations."
+    columns:
+      - name: patient_key
+        description: "Primary key for the patient record."
+        tests:
+          - not_null
+          - unique
+      - name: patient_id
+        description: "Patient's external or system identifier."
+        tests:
+          - not_null
+      - name: first_name
+        description: "Patient's first name."
+      - name: last_name
+        description: "Patient's last name."
+        tests:
+          - not_null
+      - name: gender
+        description: "Patient's gender."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["F","M"]
+      - name: date_of_birth
+        description: "Patient's date of birth."
+        tests:
+          - not_null
+      - name: contact_number
+        description: "Patient's contact phone number."
+        tests:
+          - phone_number_check
+      - name: address
+        description: "Patient's home address."
+      - name: registration_date
+        description: "Date when the patient was registered."
+        tests:
+          - not_null
+          - check_for_date_format
+      - name: insurance_provider
+        description: "Name of the patient's insurance provider."
+      - name: insurance_number
+        description: "Patient's insurance policy number."
+      - name: email
+        description: "Patient's email address."
+        tests:
+           - check_for_mail_format:
+              mail_format: '@mail.com'
+      - name: effective_start_date
+        description: "Start date of the insurance coverage."
+      - name: effective_end_date
+        description: "End date of the insurance coverage."
+      - name: is_current
+        description: "Flag indicating if the insurance coverage is current."
+        tests:
+          - accepted_values:
+              values: ["Y","N"]

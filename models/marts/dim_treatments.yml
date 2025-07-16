@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_treatments
+    description: "This model contains information about medical treatments."
+    columns:
+      - name: treatment_key
+        description: "Primary key for the treatment record."
+        tests:
+          - not_null
+          - unique
+      - name: treatment_type
+        description: "Type or category of the treatment provided."
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ["Chemotherapy", "MRI", "ECG", "Physiotherapy", "X-Ray"]
+      - name: description
+        description: "Free-text description of the treatment."
+      - name: cost_range
+        description: "Cost incurred for the treatment."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp of the most recent update to the record."
