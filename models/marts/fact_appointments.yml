@@ -1,0 +1,37 @@
+version: 2
+models:
+  - name: fact_appointments
+    columns:
+      - name: appointment_key
+        description: "unique key for the appointment table"
+        tests:
+          - unique
+          - not_null
+      - name: patient_key
+        description: "key of the patients who visits doctor and foreign key for dim_patients"
+        tests:
+          - not_null
+      - name: doctor_key
+        description: "key of the doctor who the patients need to visit and foreign key for dim_doctors"
+        tests:
+          - not_null
+      - name: appointment_date
+        description: "Appointment date given to the patient to visit the doctor"
+        tests:
+          - not_null
+      - name: appointment_time
+        description: "Appointment time given to the patient to visit the doctor"
+        tests:
+          - not_null
+      - name: reason_for_visit
+        description: "It contains the reason to visit the doctor by the Patient"
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ['Therapy', 'Consultation', 'Emergency','Checkup','Follow-up']
+      - name: status
+        description: "It contains status of the patient about the appointment"
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ['Scheduled','No-show','Cancelled', 'Completed']

@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: fact_patient_activity
+    columns:
+      - name: patient_key
+        description: "Unique key for this table and foreign key for dim_patients"
+        tests:
+          - not_null
+      - name: total_appointments
+        description: "Total number of appointments done by each patients"
+        tests:
+          - not_null
+      - name: total_billed
+        description: "Total amount billed  for each patients"
+        tests:
+          - not_null
+      - name: total_paid
+        description: "Total amount paid by each patients"
+        tests:
+          - not_null
+      - name: no_show_count
+        description: "Count of missed or no-show appointments for each patients"
+        tests:
+          - not_null
+      - name: first_appointment_date
+        description: "Date of the first appointment for each patients"
+        tests:
+          - not_null
+      - name: last_appointment_date
+        description: "Date of the last appointment"
+        tests:
+          - not_null
