@@ -4,7 +4,8 @@
         materialized='table',
         unique_key = 'doctor_id',
         pre_hook=["{{start_log( invocation_id) }}"],
-        post_hook=["{{ end_log( invocation_id) }}"]
+        post_hook=["{{ end_log( invocation_id) }}"],
+        tags='patients'
     )
 }}
 
