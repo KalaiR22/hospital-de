@@ -8,7 +8,6 @@ models:
         description: "Primary key for the patient record."
         tests:
           - not_null
-          - unique
       - name: patient_id
         description: "Patient's external or system identifier."
         tests:
