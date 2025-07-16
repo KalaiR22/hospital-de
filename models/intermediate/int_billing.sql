@@ -9,8 +9,8 @@
 
 select bill_key,
     bill_id,
-    patient_key,
-    patient_id,
+    p.patient_key,
+    b.patient_id,
     t.treatment_id as treatment_key,
     bill_date,
     amount,
@@ -25,3 +25,5 @@ select bill_key,
     last_updated from {{ ref('t_billing') }} b
 join {{ ref('t_treatments') }} t
 on b.treatment_key = t.treatment_key
+join {{ ref('t_patients') }} p 
+on b.patient_id = p.patient_id

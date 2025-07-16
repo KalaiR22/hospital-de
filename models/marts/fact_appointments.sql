@@ -8,5 +8,5 @@
     )
 }}
 
-select {{ dbt_utils.star(from=ref('t_appointments') ,  except = ["appointment_id","patient_id","doctor_id"])}}  
-from {{ ref('t_appointments') }}
+select {{ dbt_utils.star(from=ref('int_appointments') ,  except = ["appointment_id","patient_id","doctor_id"])}}  
+from {{ ref('int_appointments') }}

@@ -8,7 +8,6 @@
 select 
    concat('B-', cast(row_number() over (order by  bill_id) as varchar), substring(patient_id,2),substring(treatment_id,2)) as bill_key,
    bill_id,
-   concat(left(patient_id,1) ,'-', substring(patient_id,2)) as patient_key,
    patient_id,
    concat('T', cast(row_number() over (order by treatment_id ) as varchar)) as treatment_key,
    treatment_id,
