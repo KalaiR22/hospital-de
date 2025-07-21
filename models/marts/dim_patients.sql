@@ -8,5 +8,5 @@
     )
 }}
 
-select {{ dbt_utils.star(from=ref('int_patients') )}}  
+select {{ dbt_utils.star(from=ref('int_patients') , except = ["patient_id"] )}}  
 from {{ ref('int_patients') }}

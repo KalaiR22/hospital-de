@@ -4,7 +4,7 @@ models:
   - name: dim_doctor  
     description: "Contains information about doctors including contact details and specialization."
     columns:
-      - name: doctor_key
+      - name: doctor_id
         description: "Primary key for the doctor record."
         tests:
           - not_null

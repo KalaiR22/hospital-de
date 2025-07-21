@@ -18,8 +18,7 @@ select
   coalesce(t.description,'unknown') as description,
   coalesce(cost,0) as cost,
   cost_range,
-  to_date(treatment_date) as treatment_date,
-  current_timestamp() as last_updated
+  to_date(treatment_date) as treatment_date
 from {{ ref('stg_treatments') }} t
 join {{ ref('t_treatments_type') }} c
 on t.treatment_type = c.treatment_type
