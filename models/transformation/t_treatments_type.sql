@@ -15,7 +15,6 @@
 
  ) as varchar)) as treatment_key,
         treatment_type,DESCRIPTION,
-        concat(cast(min(cost) as varchar), '-', cast(max(cost) as varchar)) as cost_range,
-         current_timestamp() as last_updated
+        concat(cast(min(cost) as varchar), '-', cast(max(cost) as varchar)) as cost_range
     from {{ ref('stg_treatments') }}
     group by treatment_type,DESCRIPTION

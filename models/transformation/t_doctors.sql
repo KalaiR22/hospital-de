@@ -17,5 +17,4 @@ select
    coalesce(years_experience,0) as years_experience,
    coalesce(hospital_branch,'unknown') as hospital_branch,
    coalesce(email ,'unknown@hospital.com') as email,
-   current_timestamp() as last_updated_at
 from {{ ref('stg_doctors') }}

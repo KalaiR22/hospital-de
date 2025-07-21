@@ -9,3 +9,8 @@ sources:
       - name: doctors
       - name: patients
       - name: treatments
+  - name: t_data
+    database: hospital
+    schema: marts
+    tables:
+      - name: dim_doctor
