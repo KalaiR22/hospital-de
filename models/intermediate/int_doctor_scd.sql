@@ -42,13 +42,13 @@ final as (
     select
         src.*,
 
-        -- created_at logic
+   
         case
             when existing.doctor_id is null then current_timestamp
             else existing.created_at
         end as created_at,
 
-        -- last_updated_at logic
+
         case
             when existing.doctor_id is null then current_timestamp
             when src.first_name <> existing.first_name
