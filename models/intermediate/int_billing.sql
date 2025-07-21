@@ -22,8 +22,7 @@ select bill_key,
     description,
     cost,
     cost_range,
-    treatment_date,
-    last_updated from {{ ref('t_billing') }} b
+    treatment_date from {{ ref('t_billing') }} b
 join {{ ref('t_treatments') }} t
 on b.treatment_key = t.treatment_key
 join {{ ref('t_patients') }} p 
