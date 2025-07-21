@@ -33,13 +33,13 @@ final as (
     select
         src.*,
 
-        -- created_at logic
+
         case
             when existing.treatment_key is null then current_timestamp
             else existing.created_at
         end as created_at,
 
-        -- last_updated logic
+
         case
             when existing.treatment_key is null then current_timestamp
             when  src.treatment_type <> existing.treatment_type
