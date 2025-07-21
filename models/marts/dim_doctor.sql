@@ -10,3 +10,4 @@
 
 select {{ dbt_utils.star(from=ref('int_doctor_scd'))}}  
 from {{ ref('int_doctor_scd') }}
+order by doctor_id
